@@ -5,7 +5,6 @@ import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 import { theme } from "./theme"
-import { QueryClient, QueryClientProvider } from "react-query"
 
 
 const rootElement = document.getElementById('root');
@@ -85,41 +84,14 @@ a {
 
 `
 
-const client = new QueryClient();
 
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <QueryClientProvider client={client}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <App />
-        </ThemeProvider>
-      </QueryClientProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
     </RecoilRoot>
   </React.StrictMode>
 );
-
-// 기존파일
-// import React from 'react';
-// import ReactDOM from "react-dom/client";
-// import App from './App';
-// import { RecoilRoot } from 'recoil';
-// import { darktheme } from './theme';
-// import { ThemeProvider } from 'styled-components';
-
-
-// const rootElement = document.getElementById('root');
-// if (!rootElement) throw new Error('Failed to find the root element');
-// const root = ReactDOM.createRoot(rootElement);
-
-
-// root.render(
-//   <React.StrictMode>
-//     <RecoilRoot>
-//       <ThemeProvider theme={darktheme}>
-//         <App />
-//       </ThemeProvider>
-//     </RecoilRoot>
-//   </React.StrictMode>
-// );
